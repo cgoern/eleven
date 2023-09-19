@@ -1,0 +1,9 @@
+:root {
+	/**
+	 * Spacing
+	 */
+
+	--layout-spacing-minus-1: 4px;
+	--layout-spacing-0: 8px;
+	--layout-spacing-plus-1: 12px;
+}

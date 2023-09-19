@@ -1,0 +1,49 @@
+/**
+ * Light RGB
+ */
+:root {
+	--color-system-blue: rgb(0, 122, 255);
+	--color-system-red: rgb(255, 59, 48);
+	--color-system-yellow: rgb(255, 204, 0);
+	--color-system-green: rgb(40, 205, 65);
+}
+
+/**
+ * Light Display P3
+ */
+@media (color-gamut: p3) {
+	@supports (color: color(display-p3 1 1 1)) {
+		:root {
+			--color-system-blue: color(display-p3 0 0.478 1);
+			--color-system-red: color(display-p3 1 0.231 0.188);
+			--color-system-yellow: color(display-p3 1 0.8 0);
+			--color-system-green: color(display-p3 0.157 0.804 0.255);
+		}
+	}
+}
+
+/**
+ * Dark RGB
+ */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-system-blue: rgb(10, 132, 255);
+		--color-system-red: rgb(255, 69, 58);
+		--color-system-yellow: rgb(255, 214, 10);
+		--color-system-green: rgb(50, 215, 75);
+	}
+}
+
+/**
+ * Dark Display P3
+ */
+@media (color-gamut: p3) and (prefers-color-scheme: dark) {
+	@supports (color: color(display-p3 1 1 1)) {
+		:root {
+			--color-system-blue: color(display-p3 0.039 0.518 1);
+			--color-system-red: color(display-p3 1 0.271 0.227);
+			--color-system-yellow: color(display-p3 1 0.839 0.039);
+			--color-system-green: color(display-p3 0.196 0.843 0.294);
+		}
+	}
+}

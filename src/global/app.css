@@ -1,0 +1,9 @@
+@import './lib/colors.css';
+@import './lib/layout.css';
+@import './lib/effects.css';
+
+body {
+	margin: 0;
+	font-family: -apple-system;
+	overflow: hidden;
+}

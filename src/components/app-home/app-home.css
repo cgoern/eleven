@@ -1,0 +1,168 @@
+:host {
+	display: block;
+	background: rgb(255, 255, 255);
+	position: absolute;
+	width: var(--app-home-width, 800px);
+	height: var(--app-home-height, 600px);
+	left: var(--app-home-left, calc(50% - (800px / 2)));
+	top: var(--app-home-top, calc(50% - (600px / 2)));
+	border-radius: 4px;
+	box-shadow: 0 16px 42px 0 rgba(0, 0, 0, 0.3),
+		0 0 0 var(--effect-hairline-width) rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	transition-property: var(--app-home-transition-property, width, left, height, top);
+	transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:host(.resizing),
+:host(.dragging) {
+	--app-home-transition-property: none;
+}
+
+/**
+ * Title Bar
+ */
+
+#title-bar {
+	height: 60px;
+	display: grid;
+	grid-template: 1fr / repeat(3, 1fr);
+	background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(200, 200, 200));
+	box-shadow: inset 0 var(--effect-hairline-width) 0 0 rgba(255, 255, 255, 0.8),
+		inset 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 0 0 rgba(0, 0, 0, 0.4),
+		0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/**
+ * Window Controls
+ */
+
+#controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.control {
+	position: relative;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+	background: var(--app-home-control-background);
+	box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 3px rgb(0, 0, 0);
+	/* clip-path: circle(50% at 50% 50%); */
+}
+
+.control::before {
+	content: '';
+	position: absolute;
+	width: 6px;
+	height: 2px;
+	background: rgba(255, 255, 255, 0.8);
+	left: 3px;
+	top: 2px;
+	filter: blur(0.5px);
+}
+
+.control::after {
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 4px;
+	background: rgb(255, 255, 255);
+	left: 2px;
+	bottom: 2px;
+	filter: blur(2px);
+}
+
+#close {
+	--app-home-control-background: var(--color-system-red);
+}
+
+#minimize {
+	--app-home-control-background: var(--color-system-yellow);
+}
+
+#maximize {
+	--app-home-control-background: var(--color-system-green);
+}
+
+/**
+ * Resize
+ */
+
+.resize-horizontal {
+	position: absolute;
+	left: var(--app-home-resize-horizontal-left, auto);
+	right: var(--app-home-resize-horizontal-right, auto);
+	top: var(--app-home-resize-horizontal-top, 0);
+	bottom: var(--app-home-resize-horizontal-bottom, 0);
+	width: var(--layout-spacing-0);
+	cursor: ew-resize;
+}
+
+#resize-left {
+	--app-home-resize-horizontal-left: 0;
+}
+
+#resize-right {
+	--app-home-resize-horizontal-right: 0;
+}
+
+.resize-vertical {
+	position: absolute;
+	left: var(--app-home-resize-vertical-left, 0);
+	right: var(--app-home-resize-vertical-right, 0);
+	top: var(--app-home-resize-vertical-top, auto);
+	bottom: var(--app-home-resize-vertical-bottom, auto);
+	height: var(--layout-spacing-0);
+	cursor: ns-resize;
+}
+
+#resize-top {
+	--app-home-resize-vertical-top: 0;
+}
+
+#resize-bottom {
+	--app-home-resize-vertical-bottom: 0;
+}
+
+.resize-both {
+	position: absolute;
+	left: var(--app-home-resize-both-left, auto);
+	right: var(--app-home-resize-both-right, auto);
+	top: var(--app-home-resize-both-top, auto);
+	bottom: var(--app-home-resize-both-bottom, auto);
+	height: var(--layout-spacing-plus-1);
+	width: var(--layout-spacing-plus-1);
+	cursor: var(--app-home-resize-both-cursor, auto);
+}
+
+#resize-left-top {
+	--app-home-resize-both-left: 0;
+	--app-home-resize-both-top: 0;
+	--app-home-resize-both-cursor: nwse-resize;
+}
+
+#resize-right-top {
+	--app-home-resize-both-right: 0;
+	--app-home-resize-both-top: 0;
+	--app-home-resize-both-cursor: nesw-resize;
+}
+
+#resize-left-bottom {
+	--app-home-resize-both-left: 0;
+	--app-home-resize-both-bottom: 0;
+	--app-home-resize-both-cursor: nesw-resize;
+}
+
+#resize-right-bottom {
+	--app-home-resize-both-right: 0;
+	--app-home-resize-both-bottom: 0;
+	--app-home-resize-both-cursor: nwse-resize;
+}

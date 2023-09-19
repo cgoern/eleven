@@ -1,0 +1,8 @@
+:host {
+	display: block;
+	height: 100dvh;
+	width: 100dvw;
+	background: var(--color-system-blue);
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+}

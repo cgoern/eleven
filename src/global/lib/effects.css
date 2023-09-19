@@ -1,0 +1,12 @@
+:root {
+	/**
+	 * Hairline
+	 */
+	--effect-hairline-width: 1px;
+}
+
+@media (min-resolution: 2dppx) {
+	:root {
+		--effect-hairline-width: 0.5px;
+	}
+}
